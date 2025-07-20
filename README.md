@@ -22,7 +22,5 @@ Esse projeto faz parte do Challenge Back-End T6 do programa ONE da Alura + Oracl
 - Cadastro e autenticação de usuários
 - Criação de tópicos vinculados a usuários
 - Sistema de respostas para cada tópico
-- Data de criação automática
 - Filtros e paginação nas listagens
-- Swagger UI em: [`/swagger-ui/index.html`](http://localhost:8080/swagger-ui/index.html)
 
