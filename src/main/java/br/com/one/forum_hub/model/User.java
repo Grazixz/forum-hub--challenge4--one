@@ -3,10 +3,8 @@ package br.com.one.forum_hub.model;
 import br.com.one.forum_hub.DTO.DataUserLogin;
 import br.com.one.forum_hub.DTO.DataUserUpdate;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -84,6 +82,6 @@ public class User implements UserDetails {
     }
 
     public void disable() {
-        this.active = false;
+        this.active = !this.active;
     }
 }

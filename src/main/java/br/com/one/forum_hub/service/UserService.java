@@ -6,6 +6,7 @@ import br.com.one.forum_hub.DTO.DataUserLogin;
 import br.com.one.forum_hub.model.User;
 import br.com.one.forum_hub.reposity.ReposityUser;
 import br.com.one.forum_hub.service.exceptions.ExceptionData;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,15 @@ public class UserService {
     private ReposityUser reposityUser;
     @Autowired
     private PasswordEncoder encoder;
+    @Transactional
     public void userAnalysis(DataUserLogin data) {
         Optional<User> userOptional = reposityUser.findByEmail(data.email());
 
-        if (userOptional.isEmpty()){
+        if (userOptional.isEmpty()) {
             String encryptedPass = encoder.encode(data.password());
             User newUser = new User(data, encryptedPass);
             reposityUser.save(newUser);
-        }
+        } else if (!userOptional.get().isActive()) userOptional.get().disable();
     }
     public User checkUserExists(Long id) {
         Optional<User> user = reposityUser.findByIdAndActiveTrue(id);
@@ -33,10 +35,4 @@ public class UserService {
              return user.get();
          } else throw new ExceptionData("Usuário não existe no sistema!");
     }
-//    public User checkUserExists(DataResponsePost data) {
-//        Optional<User> user = reposityUser.findById(data.idUser());
-//        if (user.isPresent()){
-//            return user.get();
-//        } else throw new ExceptionData("Este usuário não existe no sistema!");
-//    }
 }
