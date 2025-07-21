@@ -53,8 +53,8 @@ public class ResponseController {
     public ResponseEntity updateResponse(@PathVariable Long id, @RequestBody DataResponseUpdate data) {
         Optional<ResponseT> responseOptional = reposity.findById(id);
         if (responseOptional.isPresent()) {
-            responseService.checkUpdateResponse(data);
             ResponseT response = responseOptional.get();
+            responseService.checkUpdateResponse(response);
             response.update(data);
             return ResponseEntity.ok(new DataResponseDetailed(response));
         } else return ResponseEntity.notFound().build();

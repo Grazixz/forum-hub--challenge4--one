@@ -11,10 +11,11 @@ public record DataTopicList(
         LocalDateTime creationDate,
         Long idUser,
         String author,
-        String coursework,
+        Long idCourse,
+        String course,
         boolean resolved) {
     public DataTopicList(Topic topic) {
-        this(topic.getId(), topic.getTitle(), topic.getMessage(), topic.getCreationDate(), topic.getUserT().getId(), topic.getUserT().getNickname(), topic.getCoursework(), topic.isResolved());
+        this(topic.getId(), topic.getTitle(), topic.getMessage(), topic.getCreationDate(), topic.getUserT().getId(), topic.getUserT().getNickname(), topic.getCourse().getId(), topic.getCourse().getTitle(), topic.isResolved());
     }
 
 }

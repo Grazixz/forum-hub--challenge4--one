@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface ReposityUser extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
     Page<User> findByActiveTrue(Pageable pageable);
+
+    Optional<User> findByIdAndActiveTrue(Long id);
 }

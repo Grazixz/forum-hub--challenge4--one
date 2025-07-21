@@ -6,6 +6,7 @@ import br.com.one.forum_hub.model.ResponseT;
 import br.com.one.forum_hub.model.Topic;
 import br.com.one.forum_hub.model.User;
 import br.com.one.forum_hub.reposity.ReposityResponse;
+import br.com.one.forum_hub.service.exceptions.Validate;
 import br.com.one.forum_hub.service.exceptions.ValidateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +21,16 @@ public class ResponseService {
     @Autowired
     private TopicService topicService;
     @Autowired
-    List<ValidateResponse> validateResponses;
+    List<Validate> validateResponses;
     public ResponseT createResponse(DataResponsePost data) {
-        validateResponses.forEach(v -> v.validatePost(data));
-        User user = userService.checkUserExistsResponse(data);
+        validateResponses.forEach(v -> v.validatePostResponse(data.idTopic(), data.message()));
+        User user = userService.checkUserExists(data.idUser());
         Topic topic = topicService.checkTopicExistsResponse(data);
         ResponseT response = new ResponseT(data, user, topic);
         reposityResponse.save(response);
         return response;
     }
-    public void checkUpdateResponse(DataResponseUpdate data) {
-        validateResponses.forEach(v -> v.validateUpdate(data));
+    public void checkUpdateResponse(ResponseT responseT) {
+        validateResponses.forEach(v -> v.validateUpdateResponse(responseT.getTopic().getId(), responseT.getMessage()));
     }
 }

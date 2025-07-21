@@ -27,16 +27,16 @@ public class UserService {
             reposityUser.save(newUser);
         }
     }
-    public User checkUserExistsTopic(DataTopicPost data) {
-        Optional<User> user = reposityUser.findById(data.idUser());
+    public User checkUserExists(Long id) {
+        Optional<User> user = reposityUser.findByIdAndActiveTrue(id);
          if (user.isPresent()){
              return user.get();
          } else throw new ExceptionData("Usuário não existe no sistema!");
     }
-    public User checkUserExistsResponse(DataResponsePost data) {
-        Optional<User> user = reposityUser.findById(data.idUser());
-        if (user.isPresent()){
-            return user.get();
-        } else throw new ExceptionData("Este usuário não existe no sistema!");
-    }
+//    public User checkUserExists(DataResponsePost data) {
+//        Optional<User> user = reposityUser.findById(data.idUser());
+//        if (user.isPresent()){
+//            return user.get();
+//        } else throw new ExceptionData("Este usuário não existe no sistema!");
+//    }
 }

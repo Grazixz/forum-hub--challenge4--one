@@ -1,7 +1,7 @@
 package br.com.one.forum_hub.controller;
 
 import br.com.one.forum_hub.DTO.*;
-import br.com.one.forum_hub.model.ResponseT;
+import br.com.one.forum_hub.model.Course;
 import br.com.one.forum_hub.model.Topic;
 import br.com.one.forum_hub.reposity.ReposityResponse;
 import br.com.one.forum_hub.reposity.ReposityTopic;
@@ -17,8 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -59,9 +57,9 @@ public class TopicController {
         Optional<Topic> topicOptional = reposity.findById(id);
 
         if (topicOptional.isPresent()) {
-            topicService.checkUpdateTopic(data);
+            Course course = topicService.checkUpdateTopic(data);
             Topic topic = topicOptional.get();
-            topic.update(data);
+            topic.update(data, course);
             return ResponseEntity.ok(new DataTopicDetailed(topic));
         } else return ResponseEntity.notFound().build();
     }

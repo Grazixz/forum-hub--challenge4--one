@@ -22,7 +22,7 @@ public class SpringDocConfig {
                                         .bearerFormat("JWT")))
                 .info(new Info()
                         .title("ForumHub API")
-                        .description("API Rest da aplicação ForumHub, contendo as funcionalidades de CRUD de tópicos, respostas e usuários.")
+                        .description("API Rest da aplicação ForumHub, contendo as funcionalidades de CRUD de usuários, cursos, tópicos e respostas.")
                         .contact(new Contact()
                                 .name("Graziela Lucena")
                                 .email("backend@forum.hub")));

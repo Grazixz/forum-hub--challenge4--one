@@ -9,4 +9,8 @@ import java.util.Optional;
 
 public interface ReposityResponse extends JpaRepository<ResponseT, Long> {
     Page<ResponseT> findAllByTopicId(Long id, Pageable pageable);
+
+    boolean existsByTopicIdAndMessage(Long id, String message);
+
+    Page<ResponseT> findAllByUserRId(Long id, Pageable pageable);
 }

@@ -2,6 +2,7 @@ package br.com.one.forum_hub.service.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +13,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ErrorHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity erro404() {
+        return ResponseEntity.notFound().build();
+    }
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity erroEnum(){
+        return ResponseEntity.badRequest().body("Não contém este curso no sistema!");
+    }
+    @ExceptionHandler(ArrayIndexOutOfBoundsException.class)
+    public ResponseEntity erroEnumList(){
         return ResponseEntity.notFound().build();
     }
     @ExceptionHandler(ValidationException.class)

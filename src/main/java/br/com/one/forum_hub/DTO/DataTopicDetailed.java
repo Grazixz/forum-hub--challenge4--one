@@ -10,11 +10,12 @@ public record DataTopicDetailed(
         String message,
         Long idUser,
         String author,
-        String coursework,
+        Long idCourse,
+        String course,
         LocalDateTime creationDate,
         boolean resolved) {
 
     public DataTopicDetailed(Topic topic) {
-        this(topic.getId(), topic.getTitle(), topic.getMessage(), topic.getUserT().getId(), topic.getUserT().getNickname(), topic.getCoursework(), topic.getCreationDate(), topic.isResolved());
+        this(topic.getId(), topic.getTitle(), topic.getMessage(), topic.getUserT().getId(), topic.getUserT().getNickname(), topic.getCourse().getId(), topic.getCourse().getTitle(), topic.getCreationDate(), topic.isResolved());
     }
 }
