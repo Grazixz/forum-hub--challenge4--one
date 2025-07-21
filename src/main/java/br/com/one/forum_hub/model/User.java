@@ -80,7 +80,6 @@ public class User implements UserDetails {
     public void update(DataUserUpdate data) {
         if (data.nickname() != null) this.nickname = data.nickname();
     }
-
     public void disable() {
         this.active = !this.active;
     }
