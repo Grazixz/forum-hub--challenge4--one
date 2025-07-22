@@ -6,7 +6,7 @@ Este projeto é uma API REST inspirada no funcionamento real de fóruns como o d
 
 Esse projeto faz parte do Challenge Back-End T6 do programa ONE da Alura + Oracle. A proposta é simular o que acontece por trás de um fórum real: usuários, tópicos, respostas, autenticação e todas as validações que um sistema desse tipo exige.
 
-## 🚀 Tecnologias e ferramentas usadas
+## ⚙️ Tecnologias e ferramentas usadas
 
 - **Java 21**
 - **Spring Boot**
@@ -16,7 +16,7 @@ Esse projeto faz parte do Challenge Back-End T6 do programa ONE da Alura + Oracl
 - **MySQL** — banco de dados relacional
 - **Flyway** — controle de migrations
 
-## 🛠️ Funcionalidades principais
+## 🛠 Funcionalidades principais
 
 - Rotas protegidas com token (JWT)
 - Cadastro e autenticação de usuários
