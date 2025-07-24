@@ -24,3 +24,15 @@ Esse projeto faz parte do Challenge Back-End T6 do programa ONE da Alura + Oracl
 - Sistema de respostas para cada tópico
 - Filtros e paginação nas listagens
 
+---
+
+## ▹ Como executar
+
+1. Clone o repositório:
+   
+   ```bash
+   git clone https://github.com/Grazixz/forum-hub--challenge4--one
+
+⚠️OBS: Precisa modificar o arquivo **properties**, para configurar seu próprio banco de dados(ex: postgresql), modifique as informações que tem no inicio **"spring.datasource...="**.
+
+---
